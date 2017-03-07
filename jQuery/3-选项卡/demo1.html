@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.12.4.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        #content {
+            margin: 100px;
+        }
+
+        li {
+            float: left;
+            width: 30px;
+            height: 20px;
+            margin-right: 5px;
+            line-height: 20px;
+            text-align: center;
+            color: #333333;
+            border: 1px solid gray;
+            background: #eee;
+            cursor: pointer;
+        }
+
+        #container {
+            clear: both;
+        }
+
+        #container div {
+            width: 200px;
+            height: 150px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+       #head .select1 {
+            background: #aabbcc;
+            color: white;
+        }
+        .hover{
+            background: #ccc;
+            color: white;
+        }
+        #container .select2 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <div id="head">
+        <ul>
+            <li class="select1">001</li>
+            <li>002</li>
+            <li>003</li>
+        </ul>
+    </div>
+    <div id="container">
+        <div class="select2">001</div>
+        <div>002</div>
+        <div>003</div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var $li = $("#head ul li");
+        $li.on("click", function () {
+            $(this).addClass("select1").siblings().removeClass("select1");
+            var $index =$li.index(this);
+            $("#container > div").eq($index).addClass("select2").siblings().removeClass("select2");
+        }).hover(function(){
+            $(this).addClass("hover");
+        },function(){
+            $(this).removeClass("hover");
+        })
+    });
+</script>
+</body>
+</html>

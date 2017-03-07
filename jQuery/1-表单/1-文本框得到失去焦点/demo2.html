@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            padding: 2px;
+        }
+    </style>
+    <script src="../../jquery-1.12.4.js"></script>
+</head>
+<body>
+<form action="">
+    <fieldset>
+        <legend>个人基本信息</legend>
+        <div>
+            <label for="username">名称</label>
+            <input type="text" id="username" value="名称"/>
+        </div>
+        <div>
+            <label for="password">密码</label>
+            <input type="password" id="password" value="密码"/>
+        </div>
+        <div>
+            <label for="msg">详细信息</label>
+            <input type="text" id="msg" value="详细信息"/>
+        </div>
+    </fieldset>
+</form>
+<script>
+    $(function(){
+        $(":input").focus(function(){
+            $(this).css({
+                "background":"pink",
+                "border":"1px solid red"
+            });
+            if($(this).val() == this.defaultValue){
+                this.value="";
+            }
+        });
+        $(":input").blur(function(){
+            $(this).css({
+                "background":"none",
+                "border":"1px solid gray"
+            }).val(this.value==""?this.defaultValue:this.value);
+        })
+    })
+</script>
+</body>
+</html>

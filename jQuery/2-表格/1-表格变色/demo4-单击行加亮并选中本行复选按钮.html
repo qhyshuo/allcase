@@ -1,0 +1,62 @@
+<html>
+<head lang="en">
+    <title></title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="../../jquery-1.12.4.js" ></script>
+    <script>
+        $(function () {
+            $('tbody tr:odd').addClass('odd');
+            $('tbody tr:even').addClass('even');
+            $('tbody tr').on('click', function () {
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected').find(':checkbox').prop('checked', false);
+                } else {
+                    $(this).addClass('selected').find(':checkbox').prop('checked', true);
+                }
+            });
+
+        })
+    </script>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>暂住地</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox" name="choice" value=""/></td>
+        <td>于硕</td>
+        <td>男</td>
+        <td>哈尔滨</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="choice" value=""/></td>
+        <td>傻亲</td>
+        <td>女</td>
+        <td>哈尔滨</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="choice" value=""/></td>
+        <td>吉吉</td>
+        <td>女</td>
+        <td>呼兰</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="choice" value=""/></td>
+        <td>王五</td>
+        <td>男</td>
+        <td>湖南长沙</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

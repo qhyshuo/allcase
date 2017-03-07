@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jquery-1.12.4.js"></script>
+</head>
+<body>
+<form action="">
+    你喜欢的运动是？<input id="check" type="checkbox"/>全选/全不选
+    <br/>
+    <input type="checkbox" name="items" value="足球"/>足球
+    <input type="checkbox" name="items" value="篮球"/>篮球
+    <input type="checkbox" name="items" value="羽毛球"/>羽毛球
+    <input type="checkbox" name="items" value="乒乓球"/>乒乓球
+    <br/>
+    <input id="checkedAll" type="button" value="全  选"/>
+    <input id="checkedNo" type="button" value="全不选"/>
+    <input id="checkedFan" type="button" value="反  选"/>
+    <input id="ok" type="button" value="提  交"/>
+</form>
+
+<script>
+    $(function(){
+        var aaa=true;
+        $("#checkedAll").on("click",function(){
+            $('[name="items"]').prop("checked",true);
+            $("#check").prop("checked",true);
+        });
+        $("#checkedNo").on("click",function(){
+            $('[name="items"]').prop("checked",false);
+            $("#check").prop("checked",false);
+            aaa=true;
+        });
+        $("#checkedFan").on("click",function(){
+            $('[name="items"]').each(function(){
+                this.checked=!this.checked;
+                var $tmp=$('[name=items]:checkbox');
+                $('#check').prop('checked',$tmp.length==$tmp.filter(':checked').length);
+            })
+        });
+        $("#check").on("click",function(){
+//            if(aaa){
+//                $('[name="items"]').prop("checked",true);
+//            }else{
+//                $('[name="items"]').prop("checked",false);
+//            }
+//            aaa=!aaa;
+            $('[name=items]:checkbox').prop("checked", this.checked );
+        });
+        $('[name=items]:checkbox').click(function(){
+            var $tmp=$('[name=items]:checkbox');
+            $('#check').prop('checked',$tmp.length==$tmp.filter(':checked').length);
+        });
+        $("#ok").on("click",function(){
+            var str="你选择的是：\r\n";
+            $("[name=items]:checked").each(function(){
+                str=str + this.value+"\r\n";
+            });
+            alert(str);
+        });
+    })
+</script>
+</body>
+</html>
